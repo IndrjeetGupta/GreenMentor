@@ -12,6 +12,8 @@ POST - /api/register
 
 POST - /api/login
 
+Get - api/users
+
 GET - /api/tasks
 
 GET - /api/tasks/:id

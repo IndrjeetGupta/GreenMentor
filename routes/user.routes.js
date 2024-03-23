@@ -6,7 +6,7 @@ const dotenv = require("dotenv")
 const useController = Router();
 
 useController.post("/register", (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password,userId } = req.body
 
     bcrypt.hash(password, 5, async function (err, hash) {
         if (err) {
@@ -16,6 +16,7 @@ useController.post("/register", (req, res) => {
             name,
             email,
             password: hash,
+            userId
         })
         await user.save()
         res.json({ message: "Signup successful" })
@@ -40,6 +41,11 @@ useController.post("/login", async (req, res) => {
         }
     });
 
+})
+
+useController.get('/users', async (req, res) => {
+    const users = await UserModel.find({ userId: req.body.userId })
+    res.send(users)
 })
 
 module.exports = {
