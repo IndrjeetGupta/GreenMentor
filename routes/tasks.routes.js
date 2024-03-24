@@ -24,9 +24,8 @@ taskController.get('/tasks/:taskId', async (req, res) => {
 })
 
 taskController.post('/tasks', async (req, res) => {
-    const { task, title, description, userId } = req.body
+    const {  title, description, userId } = req.body
     const dataTask = new TasktModel({
-        task,
         title,
         description,
         userId,
